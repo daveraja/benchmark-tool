@@ -21,6 +21,7 @@ setup(
             'bconv = benchmarktool.main.bconv:main',
             'beval = benchmarktool.main.beval:main',
             'bstat = benchmarktool.main.bstat:main',
+            'bfeat = benchmarktool.main.bfeat:main',
             'bgen = benchmarktool.main.bgen:main',
         ]
     }
