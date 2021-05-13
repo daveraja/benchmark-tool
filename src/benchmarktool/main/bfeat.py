@@ -364,8 +364,8 @@ def libSVMFormat (featuresD,maxF):
 				dic[inst]  = " ".join(svm_form)
 	return dic
 			
-	
-if __name__ == '__main__':
+
+def main():
 	usage  = "usage: %prog [options] [xml-file]"
 	parser = optparse.OptionParser(usage=usage)
 	parser.add_option("--ylabels", dest="label", action="store_true", default=False, help="first coloumn: print run time")
@@ -408,3 +408,7 @@ if __name__ == '__main__':
 		results2 = p.parse(secondIn)
 		
 	printFeat(results,opts.label,opts.iname,opts.status,opts.libSVM,opts.flab,opts.su,int(opts.maxF),opts.norm,opts.log,opts.pA, opts.hyper,results2,opts.wpf,opts.to)
+
+
+if __name__ == '__main__':
+        main()

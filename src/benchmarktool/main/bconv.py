@@ -8,7 +8,7 @@ from benchmarktool.result.parser import Parser
 import optparse
 import sys
 
-if __name__ == '__main__':
+def main():
     usage  = "usage: %prog [options] [resultfile]"
     parser = optparse.OptionParser(usage=usage)
     parser.add_option("-p", "--projects", dest="projects", default="", help="projects to display (by default all projects are shown)")
@@ -41,3 +41,7 @@ if __name__ == '__main__':
     except AttributeError:
         out = sys.stdout
     res.genOffice(out, opts.projects, opts.measures)
+
+
+if __name__ == '__main__':
+    main()

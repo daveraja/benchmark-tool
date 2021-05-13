@@ -69,8 +69,7 @@ def printStats(results,ff=""):
         print(str(k)+ " : "+str(v))
                     
 
-
-if __name__ == '__main__':
+def main():
     usage  = "usage: %prog [options] [xml-file]"
     parser = optparse.OptionParser(usage=usage)
     parser.add_option("--status", dest="status", action="store", default="", help="print only 0:'SATISFIABLE', 1:'UNSATISFIABLE' or 2:'UNKNOWN instances")
@@ -98,3 +97,6 @@ if __name__ == '__main__':
         results2 = p.parse(secondIn)
         
     printStats(results,results2)
+
+if __name__ == '__main__':
+    main()

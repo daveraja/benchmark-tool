@@ -8,10 +8,10 @@ from benchmarktool.runscript.parser import Parser
 import optparse
 import sys
 
-if __name__ == '__main__':
+
+def main():
     usage  = "usage: %prog [options] <runscript>"
     parser = optparse.OptionParser(usage=usage)
-    parser.add_option("-e", "--exclude", action="store_true", dest="exclude", default=False, help="exclude finished runs")
     
     opts, files = parser.parse_args(sys.argv[1:])
     
@@ -19,6 +19,10 @@ if __name__ == '__main__':
         fileName = files[0]
     else:
         parser.error("Exactly on file has to be given")
+    
     p = Parser()
     run = p.parse(fileName)
-    run.genScripts(opts.exclude)
+    run.evalResults(sys.stdout)
+
+if __name__ == '__main__':
+    main()
