@@ -241,8 +241,8 @@ class Run(Sortable):
                where the individual start scripts for the job shall be generated 
         """
         self.path = path
-        self.root = os.path.relpath(".", self.path) 
-    
+        self.root = os.path.relpath(".", self.path)
+
 class SeqRun(Run):
     """
     Describes a sequential run.
@@ -539,10 +539,12 @@ class PbsScriptGen(ScriptGen):
             self.time         = None
             self.startscripts = None
             self.next()
-        
+
         def write(self):
+
             if self.num > 0:
                 self.num = 0
+                # DAVE: TO CHANGE THE TEMPLATE ROOT PATH SEE TEMPLATE OPEN
                 template = open(self.runspec[2], "r").read()
                 script   = os.path.join(self.path, "start{0:04}.pbs".format(len(self.queue)))
                 open(script, "w").write(template.format(walltime=tools.pbsTime(self.runspec[3]), nodes=self.runspec[1], ppn=self.runspec[0], jobs=self.startscripts, cpt=self.runspec[4], partition=self.runspec[5]))
@@ -583,7 +585,7 @@ class PbsScriptGen(ScriptGen):
             relpath   = os.path.relpath(instpath, path)
             jobScript = os.path.join(relpath, instname)
             pbsKey    = (runspec.setting.ppn, runspec.setting.procs, runspec.setting.pbstemplate, runspec.project.job.walltime, runspec.project.job.cpt, runspec.project.job.partition)
-            
+
             if not pbsKey in pbsScripts:
                 pbsScript = PbsScriptGen.PbsScript(pbsKey, path, queue)
                 pbsScripts[pbsKey] = pbsScript
@@ -1199,7 +1201,7 @@ class Runscript:
         configs    = set()
         systems    = {}
         benchmarks = set() 
-        
+
         for project in self.projects.values():
             jobs.add(project.job)
             for runspecs in project.runspecs.values():
